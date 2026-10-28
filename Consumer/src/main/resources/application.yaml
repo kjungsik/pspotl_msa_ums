@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: notification-consumer-worker
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        acknowledge-mode: manual # ?? Ack ?? (??? ?? ??? ??)
+        prefetch: 250            # ?? 5,000? ??? ?? Consumer Prefetch ??? ?? ??
+        concurrency: 5           # ?? ??? ??? ?
+        max-concurrency: 20      # ?? ?? ? ?? ?? ??? ??

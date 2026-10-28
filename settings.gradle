@@ -1,0 +1,5 @@
+include ':app-api',':common'
+
+project(':app-api').projectDir = new File('app-api')
+project(':common').projectDir = new File('common')
+

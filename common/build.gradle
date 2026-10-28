@@ -1,0 +1,40 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.spring.dependency-management:io.spring.dependency-management.gradle.plugin:1.1.6'
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '4.1.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+
+
+dependencies {
+    api 'org.springframework.boot:spring-boot-starter-amqp'
+    api 'org.springframework.boot:spring-boot-starter-data-redis'
+    api 'com.fasterxml.jackson.core:jackson-databind'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+// 이제 bootJar Task가 인식됩니다.
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
